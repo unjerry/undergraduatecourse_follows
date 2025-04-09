@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>网课进度追踪</title>
+    <!-- 引入 js-yaml 库 -->
+    <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+    <style>
+        .course {
+            margin: 1em 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f9f9f9;
+        }
+
+        .progress-bar {
+            background: #eee;
+            border-radius: 5px;
+            overflow: hidden;
+            height: 20px;
+            width: 300px;
+            margin: 0.5em 0;
+        }
+
+        .progress {
+            background: #4caf50;
+            height: 100%;
+            width: 0%;
+            transition: width 0.5s;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>我的网课进度</h1>
+    <div id="progress-container">加载中...</div>
+
+    <script>
+        // 定义 YAML 文件 URL（请确保此文件在服务器上可访问）
+        const yamlUrl = 'index.yaml';
+
+        // 读取 YAML 文件并显示数据
+        fetch(yamlUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("网络错误: " + response.statusText);
+                }
+                return response.text();
+            })
+            .then(text => {
+                // 解析 YAML 数据
+                const data = jsyaml.load(text);
+                displayData(data);
+            })
+            .catch(error => {
+                document.getElementById('progress-container').innerText = '加载失败: ' + error;
+                console.error('Fetch error:', error);
+            });
+
+        // 根据 YAML 内容动态生成页面内容
+        function displayData(data) {
+            const container = document.getElementById('progress-container');
+            container.innerHTML = ''; // 清除加载提示
+
+            // 假设 YAML 文件结构如下：
+            // courses:
+            //   - name: "课程名称"
+            //     total: 50
+            //     watched: 17
+            //     last_watched: "2025-04-08"
+            data.courses.forEach(course => {
+                // 计算已观看百分比
+                const percent = ((course.watched / course.total) * 100).toFixed(1);
+
+                // 构建课程 div
+                const courseDiv = document.createElement('div');
+                courseDiv.className = 'course';
+                courseDiv.innerHTML = `
+          <h3>${course.name}</h3>
+          <p>已观看: ${course.watched} / ${course.total} (${percent}%)</p>
+          <div class="progress-bar">
+            <div class="progress" style="width: ${percent}%"></div>
+          </div>
+          <p>最后观看日期: ${course.last_watched}</p>
+        `;
+
+                container.appendChild(courseDiv);
+            });
+        }
+    </script>
+</body>
+
+</html>

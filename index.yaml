@@ -1,0 +1,10 @@
+courses:
+  - name: "dg(differential geometry)"
+    total: 12
+    watched: 4
+    last_watched: "2025-03-06"
+
+  - name: "ds(dynamic systems)"
+    total: 12
+    watched: 0
+    last_watched: "2025-02-25"
