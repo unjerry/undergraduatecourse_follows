@@ -1,13 +1,13 @@
 courses:
   - name: "dg(differential geometry)"
-    total: 22
+    total: 25
     watched: 4
     last_watched: "2025-03-06"
 
   - name: "ds(dynamic systems)"
-    total: 22
-    watched: 9
-    last_watched: "2025-03-25"
+    total: 26
+    watched: 15
+    last_watched: "2025-04-15"
 
   - name: "nlpg(nonlinear programming)"
     total: 22
