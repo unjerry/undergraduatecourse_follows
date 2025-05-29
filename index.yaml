@@ -5,8 +5,8 @@ courses:
     last_watched: "2025-03-06"
 
   - name: "ds(dynamic systems)"
-    total: 26
-    watched: 17
+    total: 27
+    watched: 20
     last_watched: "2025-04-22"
 
   - name: "nlpg(nonlinear programming)"
