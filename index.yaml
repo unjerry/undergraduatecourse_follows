@@ -13,3 +13,18 @@ courses:
     total: 27
     watched: 19
     last_watched: "2025-04-30"
+
+  - name: "pe(professional english)"
+    total: 16
+    watched: 0
+    last_watched: "2025-03-06"
+
+  - name: "fra(financial random analysis)"
+    total: 15
+    watched: 0
+    last_watched: "2025-03-06"
+
+  - name: "mm(modern mathematics)"
+    total: 14
+    watched: 0
+    last_watched: "2025-03-06"
