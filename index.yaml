@@ -28,3 +28,8 @@ courses:
     total: 14
     watched: 0
     last_watched: "2025-03-06"
+
+  - name: "ps(probability statistics)"
+    total: 10
+    watched: 0
+    last_watched: "2025-03-06"
